@@ -6,7 +6,9 @@ On a réalisé un découpage en 2 parties, le premier sera le front ceux qui va 
 
 
 
-## KubeDB:
+## 2. KubeDB:
+
+### Mise en place de MYSQL
 Pour pouvoir installer KubeDB il faut tout d'abord installer Helm, pour ce faire:
 
 On est passé par chocolatey en tapant cette commande:
@@ -71,7 +73,7 @@ La commande nous renvoie le nom d'utilisateur secret en base 64.
 Pareil que la commande qu'au dessus mais celle-ci est le mot de passe.
 Il faut donc ne pas oublier de mettre en base 10.
 
-![identifiant](./images/identifiant.PNG
+![identifiant](./images/identifiant.PNG)
 
 Pour terminer nous avons eu des problèmes pour la suite, defois nous pouvions nous connecter mais nous avons une erreur comme quoi la connexion au serveur s'arrêter dès l'instant ou nous nous connections.
 Ou nous avions une erreur qui disait que nous étions pas en https donc impossible pour nous de se connecter.
@@ -82,3 +84,27 @@ Au final nous avons réussi à nous connecter. Mais toutefois il nous arrive d'a
 
 ![connecter](./images/connecter.png)
 
+### Principe de CRD
+
+Un CRD nous permet de créer notre propre ressource sur kubernetes à la places des types: Pod, Service..
+
+C'est grâce à cela qu'on peut créer des choses tels que le type MySQL.
+
+## 3. WordPress
+
+Nous avons installé wordpress avec la commande suivante:
+
+    helm repo add bitnami https://charts.bitnami.com/bitnami -n front
+    helm install my-release bitnami/wordpress -n front
+
+Pour ensuite voir si cela est bien installé on peut taper la commande:
+
+    kubectl get service -n front
+
+On peut ainsi récupérer l'external-ip et se connecter dessus et on peut voir que cela fonctionne.
+
+Nous avons ensuite rencontré des erreurs et n'avons pas pu continuer dessus.
+
+## 4. RBAC
+
+## 5. Monitoring
