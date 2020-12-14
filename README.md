@@ -54,7 +54,7 @@ En rentrant cette commande nous avons créé un pod mysql qui va nous permettre 
 
     kubectl get pods mysql-wordpress-0 -n back -o yaml | grep podIP
 
-![connexion-php-my-admin](./images/podip.PNG
+![connexion-php-my-admin](./images/podip.PNG)
 
 Cette commande nous permet de récupérer le serveur sur lequel nous voulons nous connecter.
 
