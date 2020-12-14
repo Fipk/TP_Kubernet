@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: quota
+spec:
+  hard:
+    limits.cpu: 500m
+    limits.memory: 256Mi
+    requests.cpu: 250m
+    requests.memory: 128Mi
+
+# ---
+
+# kind: LimitRange
+# metadata:
+#   name: quota
+#   labels:
+#     tenant: ynov
+#     promo: b3a
+#     grade: b3
+#     type: td
+# spec:
+#   limits:
+#     - type: "Container"
+#       defaultRequest:
+#         cpu: 50m
+#         memory: 32Mi
+#       default:
+#         cpu: 100m
+#         memory: 64Mi

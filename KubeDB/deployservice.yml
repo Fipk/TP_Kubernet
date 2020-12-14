@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: myadmin
+  name: myadmin
+  namespace: back
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myadmin
+  template:
+    metadata:
+      labels:
+        app: myadmin
+    spec:
+      containers:
+      - image: phpmyadmin/phpmyadmin
+        imagePullPolicy: Always
+        name: phpmyadmin
+        ports:
+        - containerPort: 80
+          name: https
+          protocol: TCP
+        env:
+          - name: PMA_ARBITRARY
+            value: '1'
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: myadmin
+  name: myadmin
+  namespace: back
+spec:
+  ports:
+  - name: https
+    port: 80
+    protocol: TCP
+    targetPort: https
+  selector:
+    app: myadmin
+  type: LoadBalancer
