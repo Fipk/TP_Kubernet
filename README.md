@@ -71,7 +71,7 @@ La commande nous renvoie le nom d'utilisateur secret en base 64.
 Pareil que la commande qu'au dessus mais celle-ci est le mot de passe.
 Il faut donc ne pas oublier de mettre en base 10.
 
-![identifiant](./images/identifiant.PNG
+![identifiant](./images/identifiant.PNG)
 
 Pour terminer nous avons eu des problèmes pour la suite, defois nous pouvions nous connecter mais nous avons une erreur comme quoi la connexion au serveur s'arrêter dès l'instant ou nous nous connections.
 Ou nous avions une erreur qui disait que nous étions pas en https donc impossible pour nous de se connecter.
