@@ -76,7 +76,9 @@ Il faut donc ne pas oublier de mettre en base 10.
 Pour terminer nous avons eu des problèmes pour la suite, defois nous pouvions nous connecter mais nous avons une erreur comme quoi la connexion au serveur s'arrêter dès l'instant ou nous nous connections.
 Ou nous avions une erreur qui disait que nous étions pas en https donc impossible pour nous de se connecter.
 
-Au final nous avons réussi à nous connecter.
+![erreur](./images/erreur.png)
+
+Au final nous avons réussi à nous connecter. Mais toutefois il nous arrive d'avoir l'erreur.
 
 ![connecter](./images/connecter.png)
 
