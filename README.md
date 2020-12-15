@@ -1,3 +1,4 @@
+
 # TP Kubernetes
 
 ## 1. Découpage namespace
@@ -108,3 +109,45 @@ Nous avons ensuite rencontré des erreurs et n'avons pas pu continuer dessus.
 ## 4. RBAC
 
 ## 5. Monitoring
+### Mise en place de Prometheus
+Dans un premier temps nous avons installé Prometheus pour créer des graphiques avec nos données.
+
+Installation de la charte stable :
+
+    helm repo add stable https://charts.helm.sh/stable
+
+Création d'un namespace monitoring :
+
+    kubectl create ns monitoring
+
+Mise en place de promotheus sur le namespace monitoring :
+
+    helm install prometheus stable/prometheus-operator --namespace monitoring
+
+Vérification de l'installation :
+
+    kubectl --namespace monitoring get pods -l "release=prometheus"
+
+Mise en place de prometheus sur un port-forward (port 9090):
+
+    kubectl port-forward -n monitoring prometheus-prometheus-prometheus-oper-prometheus-0 9090
+
+### Mise en place de Grafana
+
+Grafana reprend les données de Prometheus et les affiches dans dans graphiques plus poussés avec la possibilité d'afficher des alertes.
+
+Installation de grafana dans le namespace monitoring, le même que prometheus :
+
+    helm install grafana --namespace monitoring stable/grafana
+
+Mise en place de grafana sur un second port forward (port 3000) :
+
+    kubectl port-forward -n monitoring prometheus-grafana-85b4dbb556-8v8dw 3000
+    
+Création des identifiants de grafana en base 64 :
+
+    kubectl get secret -n monitoring grafana-credentials -o yaml
+
+Pour obtenir les identifiants d'authentification, nous les avons passé de la base 64 à la base 10.
+Une fois l'installation en place, nous avons ajouté une alerte à Grafana.
+
