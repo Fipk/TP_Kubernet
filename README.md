@@ -107,6 +107,12 @@ On peut ainsi récupérer l'external-ip et se connecter dessus et on peut voir q
 Nous avons ensuite rencontré des erreurs et n'avons pas pu continuer dessus.
 
 ## 4. RBAC
+Les rôles ont été créés depuis Microsoft Azure dans Contrôle d’accès (IAM) -> Rôles  depuis le groupe de ressources ProjetKubernet.
+Nous avons donc créé quatre rôles personnalisés: 
+Administrateur de cluster : Permission de tout lire et de créer des cluser, pas le droit de suppression
+Développeur : Permission de tout lire et écrire, pas le permission de toucher aux ressources
+Sysops: Permission de write / read / delete
+Client: Pas finalisé, problème de permissions
 
 ## 5. Monitoring
 ### Mise en place de Prometheus
